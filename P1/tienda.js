@@ -1,39 +1,17 @@
-const http = require('http');
 
+// - Módulo http
+const http = require('http');
+var url = require('url');
+
+// - Puerto donde recibir las peticiones
 const PUERTO = 9000;
 
-//-- Texto HTML de la página principal
-const pagina_main = `
+//-- Acceso al módulo fs, para lectura de ficheros
+var fs = require('fs');
+var filename
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mi tienda</title>
-</head>
-<body style="background-color: lightblue">
-    <h1 style="color: green">MI TIENDA</h1>
-</body>
-</html>
-`
 
-//-- Texto HTML de la página de error
-const pagina_error = `
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mi tienda</title>
-</head>
-<body style="background-color: red">
-    <h1 style="color: white">ERROR!!!!</h1>
-</body>
-</html>
-`
+
 
 const server = http.createServer((req, res)=>{
     console.log("Petición recibida!");
@@ -41,30 +19,61 @@ const server = http.createServer((req, res)=>{
     //-- Valores de la respuesta por defecto
     let code = 200;
     let code_msg = "OK";
-    let page = pagina_main;
+
+    //-- Tipos mime por petición
+    let mime = "text/"
+    let mime_img = "image/"
+
 
     //-- Analizar el recurso
     //-- Construir el objeto url con la url de la solicitud
     const url = new URL(req.url, 'http://' + req.headers['host']);
     console.log(url.pathname);
 
+    var filename = "." + url.pathname;
+
     //-- Cualquier recurso que no sea la página principal
     //-- genera un error
-    if (url.pathname != '/') {
-        code = 404;
-        code_msg = "Not Found";
-        page = pagina_error;
-    }
 
-    //-- Generar la respusta en función de las variables
-    //-- code, code_msg y page
-    res.statusCode = code;
-    res.statusMessage = code_msg;
-    res.setHeader('Content-Type','text/html');
-    res.write(page);
-    res.end();
+
+    switch (url.pathname) {
+        case "/":
+            console.log("2");
+            //-- Generar la respusta en función de las variables
+            //-- code, code_msg y page
+            content = fs.readFileSync("./Home.html", "utf-8")
+            mime = mime + "html"
+            res.statusCode = code;
+            res.statusMessage = code_msg;
+            res.setHeader('Content-Type',mime);
+            res.write(content);
+            res.end();
+            break;
+
+        default:
+            let point_position = url.pathname.lastIndexOf(".")
+            let tipo = url.pathname.slice(point_position+1)
+            if (tipo == "png" || tipo == "jpeg" ) {
+              mime = mime_img + tipo
+            }else{
+              mime = mime + tipo
+            }
+
+            fs.readFile(filename, function(err, data) {
+                if (err) {
+                  res.writeHead(404, {'Content-Type': 'text/html'});
+                  return res.end("404 Not Found");
+                }
+                //-- Generar el mensaje de respuesta
+                res.writeHead(200, {'Content-Type': mime});
+                res.write(data);
+                res.end();
+              });
+        break
+   }
+
 });
 
 server.listen(PUERTO);
 
-console.log("Ejemplo 7. Escuchando en puerto: " + PUERTO);
+console.log("TIENDA. Escuchando en puerto: " + PUERTO);
