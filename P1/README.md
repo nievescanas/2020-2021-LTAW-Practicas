@@ -4,7 +4,7 @@
 
 ## **ESPECIFICACIONES**
 
-* **Servidor web:** tienda.js (nodejs)
+* **Servidor web:** (tienda.js) Hecho desde cero en nodejs 
   * **Módulos:** http y fs
   * **Puerto:** 9000
  
@@ -14,6 +14,7 @@
 ![image](https://user-images.githubusercontent.com/32259251/118306992-641e8200-b4ea-11eb-8749-72950b18d2a3.png)
 
 ## **MEJORAS**
-* Recurso /ls: 
+* Recurso /ls
+* Adaptación de plantillas: Html, css y extras en js generados con la aplicaión gratuita https://nicepage.com/ 
 
 
