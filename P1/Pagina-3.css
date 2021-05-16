@@ -1,0 +1,124 @@
+.u-section-1 .u-sheet-1 {
+  min-height: 908px;
+}
+
+.u-section-1 .u-text-1 {
+  font-size: 9.375rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  margin: 60px 604px 0 0;
+}
+
+.u-section-1 .u-text-2 {
+  margin: -50px 0 0 570px;
+}
+
+.u-section-1 .u-image-1 {
+  height: 508px;
+  object-position: 100% 100%;
+  margin: 65px auto 0 0;
+}
+
+.u-section-1 .u-text-3 {
+  text-transform: uppercase;
+  font-weight: 900;
+  margin: -556px 197px 65px 570px;
+}
+
+@media (max-width: 1199px) {
+  .u-section-1 .u-sheet-1 {
+    min-height: 953px;
+  }
+
+  .u-section-1 .u-text-1 {
+    margin-right: 404px;
+  }
+
+  .u-section-1 .u-text-2 {
+    width: auto;
+    margin-left: 556px;
+  }
+
+  .u-section-1 .u-image-1 {
+    margin-top: 60px;
+    margin-right: initial;
+    margin-left: initial;
+  }
+
+  .u-section-1 .u-text-3 {
+    width: auto;
+    font-size: 1.875rem;
+    margin: -550px 11px 60px 556px;
+  }
+}
+
+@media (max-width: 991px) {
+  .u-section-1 .u-sheet-1 {
+    min-height: 907px;
+  }
+
+  .u-section-1 .u-text-1 {
+    font-size: 6rem;
+    margin-right: 184px;
+  }
+
+  .u-section-1 .u-text-2 {
+    margin-top: 0;
+    margin-left: 217px;
+  }
+
+  .u-section-1 .u-image-1 {
+    height: 522px;
+    margin-right: initial;
+    margin-left: initial;
+  }
+
+  .u-section-1 .u-text-3 {
+    margin: -563px 27px 74px 320px;
+  }
+}
+
+@media (max-width: 767px) {
+  .u-section-1 .u-text-1 {
+    margin-right: 4px;
+  }
+
+  .u-section-1 .u-text-2 {
+    margin-left: 37px;
+  }
+
+  .u-section-1 .u-image-1 {
+    height: 492px;
+    margin-top: 92px;
+    margin-right: initial;
+    margin-left: initial;
+  }
+
+  .u-section-1 .u-text-3 {
+    margin-top: -564px;
+    margin-right: 0;
+    margin-left: 171px;
+  }
+}
+
+@media (max-width: 575px) {
+  .u-section-1 .u-text-1 {
+    font-size: 4.5rem;
+    margin-right: 0;
+  }
+
+  .u-section-1 .u-text-2 {
+    margin-left: 0;
+  }
+
+  .u-section-1 .u-image-1 {
+    margin-top: 76px;
+    margin-right: initial;
+    margin-left: initial;
+  }
+
+  .u-section-1 .u-text-3 {
+    margin-top: -548px;
+    margin-left: 44px;
+  }
+}
