@@ -1,4 +1,3 @@
-
 // - Módulo http
 const http = require('http');
 var url = require('url');
@@ -9,9 +8,6 @@ const PUERTO = 9000;
 //-- Acceso al módulo fs, para lectura de ficheros
 var fs = require('fs');
 var filename
-
-
-
 
 const server = http.createServer((req, res)=>{
     console.log("Petición recibida!");
@@ -32,13 +28,8 @@ const server = http.createServer((req, res)=>{
 
     var filename = "." + url.pathname;
 
-    //-- Cualquier recurso que no sea la página principal
-    //-- genera un error
-
-
     switch (url.pathname) {
-        case "/":
-            console.log("2");
+        case "/":           
             //-- Generar la respusta en función de las variables
             //-- code, code_msg y page
             content = fs.readFileSync("./Home.html", "utf-8")
@@ -61,8 +52,10 @@ const server = http.createServer((req, res)=>{
 
             fs.readFile(filename, function(err, data) {
                 if (err) {
+                  content = fs.readFileSync("./Pagina-Error.html", "utf-8")
                   res.writeHead(404, {'Content-Type': 'text/html'});
-                  return res.end("404 Not Found");
+                  res.write(content);
+                  return res.end();
                 }
                 //-- Generar el mensaje de respuesta
                 res.writeHead(200, {'Content-Type': mime});
@@ -75,5 +68,4 @@ const server = http.createServer((req, res)=>{
 });
 
 server.listen(PUERTO);
-
 console.log("TIENDA. Escuchando en puerto: " + PUERTO);
