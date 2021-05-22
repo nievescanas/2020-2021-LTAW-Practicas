@@ -8,12 +8,17 @@
     <meta name="page_type" content="np-template-header-footer-from-plugin">
     <title>Home</title>
     <link rel="stylesheet" href="nicepage.css" media="screen">
-<link rel="stylesheet" href="Home.css" media="screen">
+    <link rel="stylesheet" href="Home.css" media="screen">
     <script class="u-script" type="text/javascript" src="jquery.js" defer=""></script>
     <script class="u-script" type="text/javascript" src="nicepage.js" defer=""></script>
     <meta name="generator" content="Nicepage 3.14.1, nicepage.com">
     <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i">
     
+    <!-- Cargar la biblioteca Socket.IO. Nos la debe entregar el servidor -->
+    <script src="/socket.io/socket.io.js"></script>
+
+    <!-- Cliente que usa los Sockets.io-->
+    <script src="client.js" defer></script>
     
     
     <script type="application/ld+json">{
@@ -29,7 +34,7 @@
     <link rel="canonical" href="index.html">
     <meta property="og:url" content="index.html">
   </head>
-  <body data-home-page="Home.html" data-home-page-title="Home" class="u-body"><header class="u-clearfix u-header u-header" id="sec-f172"><div class="u-clearfix u-sheet u-sheet-1">
+  <body class="u-body"><header class="u-clearfix u-header u-header" id="sec-f172"><div class="u-clearfix u-sheet u-sheet-1">
         <a href="https://nicepage.com" class="u-image u-logo u-image-1" data-image-width="1280" data-image-height="1280">
           <img src="images/5b3c1ee4c10c72a94224965ea06fc0338f5ca908b5a7b847295bb06e61525a879521dbc93986ab6b7747a51fee67f328b7458e10b98bda6f1e419c_1280.png" class="u-logo-image u-logo-image-1" data-image-width="64">
         </a>
@@ -65,6 +70,8 @@
             <div class="u-layout-row">
               <div class="u-container-style u-image u-layout-cell u-left-cell u-size-59 u-image-1" data-image-width="626" data-image-height="417">
                 <div class="u-container-layout u-container-layout-1">
+                  <h3>Mensajes recibidos</h3>
+                  <p id="display"></p>
                   <div class="u-container-style u-expanded-width u-group u-white u-group-1">
                     <div class="u-container-layout u-container-layout-2">
                       <a href="https://nicepage.com/k/radio-website-templates" class="u-border-2 u-border-hover-palette-3-base u-border-palette-1-base u-btn u-btn-round u-button-style u-none u-radius-50 u-text-palette-2-base u-btn-1"><span class="u-icon u-icon-1"><svg class="u-svg-content" viewBox="0 0 512 512" x="0px" y="0px" style="width: 1em; height: 1em;"><path d="M376,30c-27.783,0-53.255,8.804-75.707,26.168c-21.525,16.647-35.856,37.85-44.293,53.268 c-8.437-15.419-22.768-36.621-44.293-53.268C189.255,38.804,163.783,30,136,30C58.468,30,0,93.417,0,177.514 c0,90.854,72.943,153.015,183.369,247.118c18.752,15.981,40.007,34.095,62.099,53.414C248.38,480.596,252.12,482,256,482 s7.62-1.404,10.532-3.953c22.094-19.322,43.348-37.435,62.111-53.425C439.057,330.529,512,268.368,512,177.514 C512,93.417,453.532,30,376,30z"></path></svg><img></span>
@@ -73,8 +80,8 @@
                         <form action="#" method="POST" class="u-clearfix u-form-horizontal u-form-spacing-15 u-inner-form" style="padding: 15px" source="custom">
                           <div class="u-form-group u-form-name">
                             <label for="name-558c" class="u-form-control-hidden u-label">Name</label>
-                            <input type="text" placeholder="" id="name-558c" name="name" class="u-border-1 u-border-grey-30 u-input u-input-rectangle" required="">
-                          </div>
+                            <input type="text" placeholder="Escribe aquí los mensajes..." autocomplete="off" id="msg_entry" name="name" class="u-border-1 u-border-grey-30 u-input u-input-rectangle" >
+                          </div> 
                           <div class="u-form-group u-form-submit">
                             <a href="#" class="u-btn u-btn-submit u-button-style">Submit</a>
                             <input type="submit" value="submit" class="u-form-control-hidden">
@@ -86,11 +93,6 @@
                       </div>
                     </div>
                   </div>
-                </div>
-              </div>
-              <div class="u-align-left u-container-style u-layout-cell u-right-cell u-size-1 u-layout-cell-2">
-                <div class="u-container-layout u-valign-top-sm u-valign-top-xs u-container-layout-3">
-                  <a href="https://nicepage.com/c/technology-website-templates" class="u-border-4 u-border-black u-link u-no-underline u-text-body-color u-link-1">read more</a>
                 </div>
               </div>
             </div>
