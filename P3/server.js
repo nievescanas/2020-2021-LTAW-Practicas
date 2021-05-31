@@ -16,8 +16,8 @@ const server = http.Server(app);
 const io = socket(server);
 
 // Mensajes predeterminados
-
-let msg_welcome = ("Welcome :)");
+let msg_welcome = ("= > ¡ Welcome to chat !");
+let msg_connection = ("= > New user connected");
 
 //-------- PUNTOS DE ENTRADA DE LA APLICACION WEB
 //-- Definir el punto de entrada principal de mi aplicación web
@@ -40,6 +40,8 @@ io.on('connect', (socket) => {
 
   // Envio: Mensaje de bienvenida 
   socket.send(msg_welcome);
+  // Envio: Mensaje info. Nuevo usuario conectado
+  io.send(msg_connection);
 
   //-- Evento de desconexión
   socket.on('disconnect', function(){
