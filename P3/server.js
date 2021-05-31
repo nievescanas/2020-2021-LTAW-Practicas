@@ -15,6 +15,10 @@ const server = http.Server(app);
 //-- Crear el servidor de websockets, asociado al servidor http
 const io = socket(server);
 
+// Mensajes predeterminados
+
+let msg_welcome = ("Welcome :)");
+
 //-------- PUNTOS DE ENTRADA DE LA APLICACION WEB
 //-- Definir el punto de entrada principal de mi aplicación web
 app.get('/', (req, res) => {
@@ -33,6 +37,9 @@ app.use(express.static('public'));
 io.on('connect', (socket) => {
   
   console.log('** NUEVA CONEXIÓN **'.yellow);
+
+  // Envio: Mensaje de bienvenida 
+  socket.send(msg_welcome);
 
   //-- Evento de desconexión
   socket.on('disconnect', function(){
